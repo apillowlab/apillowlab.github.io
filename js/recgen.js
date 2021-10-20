@@ -23,6 +23,7 @@ function generate(){
     };
     var width = 600, height = 100;
     var avatar = '../images/avatar_0.png';
+
     var c=document.getElementById('canvas'), ctx=c.getContext('2d'), r = getPixelRatio(ctx);
     var cx = 0, cy = 0;
     var radius = 15, borderradius = 5, margin_avatar_bubble = 10, margin_bubble_message = 8;
@@ -52,12 +53,12 @@ function generate(){
     ctx.fillStyle = "#eff0f1";
     ctx.fill();
     //name
-    ctx.fillStyle = "#9097a1";
-    ctx.font = "350 "+name_font_size * ratio + "px sans-serif";
+    ctx.fillStyle = "#9aa1aa";
+    ctx.font = "350 "+name_font_size * ratio + "px \"Heiti SC\"";
     ctx.fillText(name, (cx + radius * 2 + margin_avatar_bubble) * ratio, (cy + name_font_size) * ratio, 999);
     //message
     ctx.fillStyle = "#1f232a";
-    ctx.font = "350 "+msg_font_size * ratio + "px sans-serif";
+    ctx.font = "350 "+msg_font_size * ratio + "px \"Heiti SC\"";
     ctx.fillText(msg, (cx + radius * 2 + margin_avatar_bubble + margin_bubble_message) * ratio, (cy + radius * 1.3 + margin_bubble_message + msg_font_size) * ratio, 999);
 
     ctx.restore();
