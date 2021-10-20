@@ -59,23 +59,34 @@ function generate(){
 
     var c=document.getElementById('canvas'), ctx=c.getContext('2d'), r = getPixelRatio(ctx);
     var cx = 0, cy = 0;
-    var radius = 16, borderradius = 5, margin_avatar_bubble = 10, margin_bubble_message = 8;
+    var radius = 16, borderradius = 8, margin_avatar_bubble = 10, margin_bubble_message = 12;
     var ratio = 1;
-    var name_font_size = 12, msg_font_size = 14.5;
+    var name_font_size = 12, msg_font_size = 14;
     var name = "";
     var msg = "";
+
     if (document.getElementById("avatar").files.length > 0){
         var avatarfile = document.getElementById("avatar").files[0];
         avatarurl = getFileUrl(avatarfile);
     }
-    var fontfamily = "serif";
+    var fontfamily = "Microsoft YaHei";
     var isMac = /macintosh|mac os x/i.test(navigator.userAgent);
     if (isMac){
         fontfamily = "\"Heiti SC\"";
+        name_font_size = 13;
+        msg_font_size = 15;
     }
 
     name = document.getElementById("name").value;
     msg = document.getElementById("message").value;
+    var message_width = textSize(msg_font_size+"px",fontfamily,msg).width;
+    var message_height = 42;
+
+    if (isMac){
+        fontfamily = "\"Heiti SC\"";
+        margin_bubble_message = 14;
+        message_height = 44;
+    }
 
     c.style.width = width + 'px';
     c.style.height = height + 'px';
@@ -85,15 +96,12 @@ function generate(){
     c.height = height * r;
 
     ctx.scale(r, r);
+    ctx.imageSmoothingEnable = false;
     //bg
     ctx.rect(0, 0,c.width,c.height);
     ctx.fillStyle='transparent';
     ctx.fill();
     //msgbubble
-    //var message_width = msg.byteLength();
-    var message_width = textSize(msg_font_size+"px",fontfamily,msg).width;
-    //console.log(textSize(msg_font_size+"px","source-han-sans-simplified-c",msg));
-    var message_height = 35;
     drawRoundRect(ctx, (cx + radius * 2 + margin_avatar_bubble) * ratio, (cy + radius * 1.3) * ratio, (message_width + margin_bubble_message * 2) * ratio, message_height * ratio, borderradius * ratio);
     ctx.fillStyle = "#eff0f1";
     ctx.fill();
