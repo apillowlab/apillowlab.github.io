@@ -5,15 +5,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>恩西亚飞书言论生成器v0.1</title>
+    <title>恩西亚飞书言论生成器v0.2</title>
+    <script>
+        (function(d) {
+            var config = {
+                    kitId: 'mic7txj',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
 </head>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
-<script src="./js/require.js"></script>
 <script src="./js/recgen.js"></script>
 <body>
 <form>
-    <input id="name" type="text" value="赤魔法师021" disabled="disabled"/>
+    <input id="avatar" type="file" accept="image/*">
+    <input id="name" type="text" value="赤魔法师021"/>
     <input id="message" type="text" value=""/>
     <input type="button" value="Generate" onclick="generate()"/>
 </form>
